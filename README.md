@@ -2,9 +2,9 @@
 
 Tools for working with the **Spain Mobile ID** (DNI / MiDNI).
 
-## QR Decoder
+## Decoder
 
-Decodes QR payloads from Spain's MiDNI app, which encode identity data as [ICAO 9303-13](https://www.icao.int/publications/Documents/9303_p13_cons_en.pdf) Visible Digital Seals (VDS) signed with ECDSA.
+The `SpainMobileIDDecoder.py` script can decode QR payloads from Spain's MiDNI app, which encode identity data as [ICAO 9303-13](https://www.icao.int/publications/Documents/9303_p13_cons_en.pdf) Visible Digital Seals (VDS) signed with ECDSA.
 
 ### Features
 
