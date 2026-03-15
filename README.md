@@ -18,16 +18,16 @@ The `SpainMobileIDDecoder.py` script can decode QR payloads from Spain's MiDNI a
 
 ### Usage
 
-#### From a binary QR payload
+#### From a binary payload
 
 ```sh
-python SpainMobileIDDecoder.py --file payload.bin
+python SpainMobileIDDecoder.py --file Examples/SpainMobileID-QR-Example-1.bin
 ```
 
 #### From stdin (binary)
 
 ```sh
-cat payload.bin | python SpainMobileIDDecoder.py --stdin
+cat Examples/SpainMobileID-QR-Example-1.bin | python SpainMobileIDDecoder.py --stdin
 ```
 
 #### From a hex string
@@ -54,16 +54,16 @@ zbarimg --raw --oneshot -Sbinary Examples/SpainMobileID-QR-Example-1.png | pytho
 
 ```sh
 # Save to file
-python SpainMobileIDDecoder.py --file payload.bin --save-image photo.jp2
+python SpainMobileIDDecoder.py --file Examples/SpainMobileID-QR-Example-1.bin --save-image photo.jp2
 
 # Open directly
-python SpainMobileIDDecoder.py --file payload.bin --open-image
+python SpainMobileIDDecoder.py --file Examples/SpainMobileID-QR-Example-1.bin --open-image
 ```
 
 #### JSON output
 
 ```sh
-python SpainMobileIDDecoder.py --file payload.bin --json
+python SpainMobileIDDecoder.py --file Examples/SpainMobileID-QR-Example-1.bin --json
 ```
 
 ### Example Output
@@ -106,6 +106,15 @@ python SpainMobileIDDecoder.py --file payload.bin --json
 
 =================================================================
 ```
+
+### Examples
+
+The `Examples/` directory contains sample QR images and their extracted binary payloads:
+
+| Example | QR Image | Binary Payload | Verification Type |
+|---------|----------|----------------|-------------------|
+| 1 | `SpainMobileID-QR-Example-1.png` | `SpainMobileID-QR-Example-1.bin` | Complete |
+| 2 | `SpainMobileID-QR-Example-2.png` | `SpainMobileID-QR-Example-2.bin` | Simple |
 
 ### QR Payload Format
 
