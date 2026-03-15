@@ -1,10 +1,12 @@
 # SpainMobileID
 
-Decoder for **Spain Mobile ID** (DNI / MiDNI) QR codes, based on the [ICAO 9303-13](https://www.icao.int/publications/Documents/9303_p13_cons_en.pdf) Visible Digital Seal (VDS) standard.
+Tools for working with the **Spain Mobile ID** (DNI / MiDNI).
 
-The Spanish _Policía Nacional_ MiDNI app generates QR codes containing identity data signed with ECDSA. This tool parses those QR payloads and extracts all embedded fields.
+## QR Decoder
 
-## Features
+Decodes QR payloads from Spain's MiDNI app, which encode identity data as [ICAO 9303-13](https://www.icao.int/publications/Documents/9303_p13_cons_en.pdf) Visible Digital Seals (VDS) signed with ECDSA.
+
+### Features
 
 - Parses ICAO 9303-13 VDS headers (C40 encoding, BER-TLV)
 - Extracts identity fields: name, surnames, DOB, sex, document number, expiry, nationality, address, birthplace, parents, support number
@@ -14,33 +16,33 @@ The Spanish _Policía Nacional_ MiDNI app generates QR codes containing identity
 - Auto-strips QR byte-mode headers from raw codeword input
 - Extensible base class (`VDSDecoder`) for other ICAO 9303-13 profiles
 
-## Usage
+### Usage
 
-### From a binary QR payload
+#### From a binary QR payload
 
 ```sh
 python SpainMobileIDDecoder.py --file payload.bin
 ```
 
-### From stdin (binary)
+#### From stdin (binary)
 
 ```sh
 cat payload.bin | python SpainMobileIDDecoder.py --stdin
 ```
 
-### From a hex string
+#### From a hex string
 
 ```sh
 python SpainMobileIDDecoder.py 'dc037581759ea9b5...'
 ```
 
-### From stdin (hex)
+#### From stdin (hex)
 
 ```sh
 echo 'dc037581759ea9b5...' | python SpainMobileIDDecoder.py --stdin --input-format hex
 ```
 
-### Decoding a QR from an image
+#### Decoding a QR from an image
 
 Use any QR code reader that outputs raw binary data. For example, with [zbarimg](https://github.com/mchehab/zbar):
 
@@ -48,7 +50,7 @@ Use any QR code reader that outputs raw binary data. For example, with [zbarimg]
 zbarimg --raw --oneshot -Sbinary Examples/SpainMobileID-QR-Example-1.png | python SpainMobileIDDecoder.py --stdin
 ```
 
-### Extracting the thumbnail photo
+#### Extracting the thumbnail photo
 
 ```sh
 # Save to file
@@ -58,13 +60,13 @@ python SpainMobileIDDecoder.py --file payload.bin --save-image photo.jp2
 python SpainMobileIDDecoder.py --file payload.bin --open-image
 ```
 
-### JSON output
+#### JSON output
 
 ```sh
 python SpainMobileIDDecoder.py --file payload.bin --json
 ```
 
-## Example Output
+### Example Output
 
 ```
 =================================================================
@@ -105,7 +107,7 @@ python SpainMobileIDDecoder.py --file payload.bin --json
 =================================================================
 ```
 
-## QR Payload Format
+### QR Payload Format
 
 The QR payload follows [ICAO Doc 9303 Part 13](https://www.icao.int/publications/Documents/9303_p13_cons_en.pdf) (Visible Digital Seals):
 

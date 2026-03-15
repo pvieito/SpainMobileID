@@ -578,6 +578,9 @@ def main():
     else:
         data = raw
 
+    if not data:
+        parser.error("no input data (empty payload)")
+
     seal = parse_seal(data)
     decoder = get_decoder(seal)
     result = decoder.interpret(seal)
